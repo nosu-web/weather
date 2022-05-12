@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="temp"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    // Функция, выполняемая после загрузки DOM
+    $( document ).ready(function() {
+        let key = '9614e577db334233a7940812221105';
+        let city = 'Vladikavkaz';
+        let url = 'http://api.weatherapi.com/v1/current.json?key='+key+'&q='+city+'&aqi=no';
+        
+        // AJAX-запрос к серверу API
+        $.get( url, function( json ) {
+            // Текущая погода
+            console.log(json.current.temp_c);
+            $('.temp').text(json.current.temp_c);
+        });
+    });
+    </script>
+</body>
+</html>-
